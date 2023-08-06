@@ -1,0 +1,17 @@
+name: OSSF Scorecard Generation
+run-name: ${{ github.actor }} is generating OSSF Scorecard 🚀
+on: [workflow_dispatch]
+jobs:
+  Generate-OSSF-Scorecard:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "${{ github.event_name }} event started."
+      - run: echo "INFO - Running on a ${{ runner.os }} server hosted by GitHub"
+      - run: echo "Branch ${{ github.ref }} | Repository ${{ github.repository }}."
+      - name: Check out repository code
+        uses: actions/checkout@v3
+      - run: echo "** ${{ github.repository }} repository has been cloned to the runner."
+      - name: OSSF Scorecard action
+        uses: ossf/scorecard-action@v2.2.0
+      - run: echo "** OSSF Scorecard Action Finished."
+      - run: echo "Job Status - ${{ job.status }}."
